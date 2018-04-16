@@ -1,0 +1,4 @@
+bin/pre-build
+cd terraform/build
+yarn --production --no-lockfile
+rm -Rf package.json

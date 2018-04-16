@@ -1,0 +1,19 @@
+#!/bin/bash
+
+for i in "$@"
+do
+case ${i} in
+  -s|--skip-build)
+  SKIP_BUILD=1
+  shift # past argument=value
+  ;;
+esac
+done
+
+if [[ ${SKIP_BUILD} != 1 ]]
+then
+  bin/build
+fi
+
+cd terraform
+terraform apply

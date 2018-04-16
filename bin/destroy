@@ -1,0 +1,4 @@
+# pre-build is required because terraform has references to lambda files
+bin/pre-build
+cd terraform
+terraform destroy

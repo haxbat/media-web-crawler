@@ -11,7 +11,11 @@
     "get-all": "node src/tasks/get-all",
     "get-last-execution": "node src/tasks/get-last-execution",
     "update": "node src/tasks/update",
-    "create": "node src/tasks/create"
+    "create": "node src/tasks/create",
+    "tf:build": "bin/build",
+    "tf:plan": "bin/plan",
+    "tf:apply": "bin/apply",
+    "tf:destroy": "bin/destroy"
   },
   "dependencies": {
     "axios": "^0.18.0"
