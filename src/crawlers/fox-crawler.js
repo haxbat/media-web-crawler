@@ -19,7 +19,7 @@ module.exports = {
   ignoreRobotsTxt: true,
   disableWebSecurity: true,
   clickableElementsSelector: 'a:not([rel=nofollow])',
-  finishWebhookUrl: 'http://some-aws-endpoint/bla-bla-bla'
+  finishWebhookUrl: 'https://nvq99qu2s7.execute-api.eu-central-1.amazonaws.com/dev/get-last-execution'
 };
 
 function pageFunction(context) {

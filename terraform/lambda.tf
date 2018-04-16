@@ -10,7 +10,7 @@ data "archive_file" "build_zip" {
 }
 
 resource "aws_s3_bucket_object" "lambdas-source" {
-  bucket      = "web-crawler"
+  bucket      = "${aws_s3_bucket.lambda.id}"
   key         = "${local.lambdas_source_s3_key}"
   source      = "${local.build_file_name}"
   etag        = "data.archive_file.build_zip.output_md5"
@@ -19,7 +19,7 @@ resource "aws_s3_bucket_object" "lambdas-source" {
 }
 
 resource "aws_lambda_function" "run-web-crawler" {
-  s3_bucket         = "web-crawler" # todo: do not duplicate
+  s3_bucket         = "${aws_s3_bucket.lambda.id}"
   s3_key            = "${local.lambdas_source_s3_key}"
   function_name     = "run-web-crawler"
   handler           = "src/lambdas/run.handler"
@@ -33,7 +33,7 @@ resource "aws_lambda_function" "run-web-crawler" {
 }
 
 resource "aws_lambda_function" "get-last-execution" {
-  s3_bucket         = "web-crawler" # todo: do not duplicate
+  s3_bucket         = "${aws_s3_bucket.lambda.id}"
   s3_key            = "${local.lambdas_source_s3_key}"
   function_name     = "get-last-execution"
   handler           = "src/lambdas/get-last-execution.handler"

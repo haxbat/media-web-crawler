@@ -1,0 +1,4 @@
+cd terraform
+
+rm -Rf build
+rm -Rf build.zip

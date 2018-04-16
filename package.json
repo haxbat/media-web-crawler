@@ -16,7 +16,8 @@
     "tf:build": "bin/build",
     "tf:plan": "bin/plan",
     "tf:apply": "bin/apply",
-    "tf:destroy": "bin/destroy"
+    "tf:destroy": "bin/destroy",
+    "tf:clean": "bin/clean"
   },
   "dependencies": {
     "axios": "^0.18.0"

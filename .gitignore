@@ -5,4 +5,5 @@ terraform/build
 .terraform/
 
 *.tfstate
+*.tfstate.backup
 build.zip
