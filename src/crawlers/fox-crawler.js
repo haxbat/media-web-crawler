@@ -29,7 +29,7 @@ function pageFunction(context) {
 
   return {
     title:            $('meta[name="dc.title"]').attr('content'),
-    content:          $('.article-body').text(),
+    content:          $('.article-body').text().replace(/\s+/g,' '),
     author:           $('meta[name="dc.creator"]').attr('content'),
     publication_date: $('meta[name="dc.date"]').attr('content'),
     comments_count:   iframe.length
