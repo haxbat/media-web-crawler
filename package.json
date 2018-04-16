@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node src/tasks/run",
     "get-all": "node src/tasks/get-all",
+    "get-last-execution": "node src/tasks/get-last-execution",
     "update": "node src/tasks/update",
     "create": "node src/tasks/create"
   },

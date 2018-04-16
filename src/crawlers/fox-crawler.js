@@ -2,7 +2,15 @@ module.exports = {
   customId: 'exponenta_fox_article',
   startUrls: [
     {
-      value: 'http://www.foxnews.com/politics/2018/04/15/comey-trump-trade-shots-ahead-long-awaited-interview-book-release.html',
+      value: 'http://www.foxnews.com/',
+    },
+  ],
+  crawlPurls: [
+    {
+      value: 'http://www.foxnews.com/[(\\w)+/2018/04/.+]',
+    },
+    {
+      value: 'http://www.foxnews.com/[(\\w)+/2018/03/(1[5-9])|(2[0-9])|(3[0-9])/.+]',
     },
   ],
   pageFunction: pageFunction.toString(),
@@ -10,19 +18,22 @@ module.exports = {
   loadImages: false,
   ignoreRobotsTxt: true,
   disableWebSecurity: true,
-  clickableElementsSelector: null,
+  clickableElementsSelector: 'a:not([rel=nofollow])',
+  finishWebhookUrl: 'http://some-aws-endpoint/bla-bla-bla'
 };
 
 function pageFunction(context) {
-  // called on every page the crawler visits, use it to extract data from it
-  var $ = context.jQuery;
+  const $ = context.jQuery;
 
-  var result = {
-    publication_date: $('meta[name="dc.date"]').attr("content"),
-    title:            $('meta[name="dc.title"]').attr("content"),
-    author:           $('meta[name="dc.creator"]').attr("content"),
-    content:          $( ".article-body" ).text(),
-    comments_count:   $('.param-messagesCount', $('.sppre_frame-container iframe').contents())[0].innerHTML.replace(',','').replace('.','')
+  const iframe = $('.param-messagesCount', $('.sppre_frame-container iframe').contents());
+
+  return {
+    title:            $('meta[name="dc.title"]').attr('content'),
+    content:          $('.article-body').text(),
+    author:           $('meta[name="dc.creator"]').attr('content'),
+    publication_date: $('meta[name="dc.date"]').attr('content'),
+    comments_count:   iframe.length
+      ? iframe[0].innerHTML.replace(',','').replace('.','')
+      : null
   };
-  return result;
 }
