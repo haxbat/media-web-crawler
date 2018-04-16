@@ -1,2 +1,8 @@
 node_modules/
 .idea/
+
+terraform/build
+.terraform/
+
+*.tfstate
+build.zip

@@ -32,7 +32,7 @@ resource "aws_iam_role_policy_attachment" "rds" {
 }
 
 resource "aws_iam_role_policy" "role_policy" {
-  name = "${module.naming.aws_iam_policy}"
+  name = "web-crawler"
   role = "${aws_iam_role.web-crawler.id}"
   policy = <<EOF
 {

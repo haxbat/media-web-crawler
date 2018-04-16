@@ -2,6 +2,5 @@ BUILD_DIR="terraform/build"
 SRC_DIR="$BUILD_DIR/src"
 
 yarn --no-lockfile
-yarn run clean
 mkdir -p $SRC_DIR
 cp package.json $BUILD_DIR

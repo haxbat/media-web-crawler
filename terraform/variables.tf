@@ -2,6 +2,10 @@ variable "aws_profile" {
   default = "exponenta"
 }
 
+variable "account_id" {
+  default = "703014081263"
+}
+
 variable "aws_region" {
   default = "eu-central-1"
 }

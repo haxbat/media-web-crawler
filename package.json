@@ -12,6 +12,7 @@
     "get-last-execution": "node src/tasks/get-last-execution",
     "update": "node src/tasks/update",
     "create": "node src/tasks/create",
+    "tf:init": "bin/init",
     "tf:build": "bin/build",
     "tf:plan": "bin/plan",
     "tf:apply": "bin/apply",

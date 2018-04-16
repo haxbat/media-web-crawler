@@ -24,7 +24,7 @@ resource "aws_api_gateway_integration" "run-web-crawler" {
   integration_http_method = "POST"
   type                    = "AWS"
   uri                     = "arn:aws:apigateway:${var.aws_region}:lambda:path/2015-03-31/functions/${aws_lambda_function.run-web-crawler.arn}/invocations"
-  credentials             = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${aws_iam_role.web-crawler.name}"
+  credentials             = "arn:aws:iam::${var.account_id}:role/${aws_iam_role.web-crawler.name}"
 }
 
 resource "aws_api_gateway_method_response" "run-web-crawler-get-200" {
